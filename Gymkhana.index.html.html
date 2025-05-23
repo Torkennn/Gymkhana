@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymkhana Tecnológica Aznalcázar (Grupo 1): Habilidades TIC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Fuente Inter */
+        }
+        .posta-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .interactive-zone {
+            min-height: 100px; /* Espacio para elementos interactivos */
+        }
+        /* Estilos para mensajes de simulación */
+        .simulation-message {
+            display: none;
+            padding: 8px;
+            margin-top: 8px;
+            border-radius: 6px;
+            background-color: #e0f2fe; /* Tailwind: bg-sky-100 */
+            color: #0c4a6e; /* Tailwind: text-sky-800 */
+            border: 1px solid #7dd3fc; /* Tailwind: border-sky-300 */
+        }
+        /* Estilo para el "camino" entre postas */
+        .path-connector {
+            width: 4px;
+            background-color: #cbd5e1; /* Tailwind: bg-slate-300 */
+            margin: 0 auto;
+        }
+        .posta-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .posta-content.open {
+            max-height: 1000px; /* Ajustar según el contenido máximo esperado */
+        }
+        /* Estilo para botones interactivos */
+        .interactive-button {
+            background-color: #3b82f6; /* bg-blue-500 */
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .interactive-button:hover {
+            background-color: #2563eb; /* bg-blue-600 */
+        }
+        .tool-icon {
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">Gymkhana Tecnológica en Aznalcázar (Grupo 1)</h1>
+            <p class="text-lg md:text-xl text-slate-700">¡Tu Aventura Digital Comienza Aquí!</p>
+            <p class="mt-4 text-sm text-slate-600">Haz clic en cada posta para descubrir las habilidades TIC que vas a dominar.</p>
+        </header>
+
+        <div class="space-y-4">
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="file-text" class="mr-3 text-indigo-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-indigo-700">Inicio y Prueba 1: Muralla – El Desafío del Formulario</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-sm text-slate-600 mb-1"><strong>Lugar:</strong> Dirigíos con el GPS hacia la muralla por calle Miguel Servet.</p>
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Búsqueda de Información y Cumplimentación de Formularios</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Utilizar el GPS para la navegación inicial.</li>
+                        <li>Buscar información eficientemente en Internet usando buscadores o IA.</li>
+                        <li>Rellenar formularios online con las respuestas encontradas.</li>
+                        <li>Trabajar en equipo para resolver cuestionarios.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="navigation" class="tool-icon"></i>GPS (Google Maps, etc.)</span>
+                        <span><i data-lucide="search" class="tool-icon"></i>Buscadores (Google, etc.)</span>
+                        <span><i data-lucide="brain" class="tool-icon"></i>IA (ChatGPT, Gemini)</span>
+                        <span><i data-lucide="smartphone" class="tool-icon"></i>Móvil para formularios</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, 'Formulario del equipo rival abierto. ¡A buscar las respuestas para superar las 8 correctas! Pista siguiente: En un parque cercano se encuentra un llavero colgado.')">
+                            <i data-lucide="edit" class="inline-block mr-1 h-4 w-4"></i> Simular Abrir y Rellenar Formulario
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="path-connector h-8"></div>
+
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="key-round" class="mr-3 text-green-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-green-700">Posta 2: Parque Cerro del Alcázar – El Llavero y la IA Creativa</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Uso de IA Generativa de Imágenes y Comunicación Multimedia</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Encontrar un objeto físico siguiendo una pista.</li>
+                        <li>Adjuntar una foto de un objeto a una IA (ChatGPT, Gemini) para la creación de imágenes.</li>
+                        <li>Especificar parámetros a la IA para generar una imagen deseada (ej. animal con el llavero).</li>
+                        <li>Enviar la imagen generada por WhatsApp.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="camera" class="tool-icon"></i>Cámara del móvil</span>
+                        <span><i data-lucide="bot" class="tool-icon"></i>IA Generativa (ChatGPT, Gemini)</span>
+                        <span><i data-lucide="image-plus" class="tool-icon"></i>Función de adjuntar imagen en IA</span>
+                        <span><i data-lucide="message-circle" class="tool-icon"></i>WhatsApp</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, '¡Llavero encontrado! Foto enviada a la IA. ¡Mira qué lince tan chulo ha creado con el llavero! Enviando por WhatsApp... Pista: Hay que mover los pies donde a veces trabaja Andrés.')">
+                           <i data-lucide="sparkles" class="inline-block mr-1 h-4 w-4"></i> Simular Creación y Envío de Imagen con IA
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="path-connector h-8"></div>
+
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="group" class="mr-3 text-purple-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-purple-700">Posta 3: Plaza del Cabildo – Selfie Artístico con IA</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Edición de Fotos con IA y Compartir en Grupo</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Tomar selfies o fotos grupales.</li>
+                        <li>Utilizar apps de edición de fotos (Snapseed, Remini, Canva) para mejorar o transformar imágenes.</li>
+                        <li>Aplicar funciones de IA dentro de estas apps para efectos creativos.</li>
+                        <li>Publicar la foto editada en el grupo de WhatsApp del curso.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="camera" class="tool-icon"></i>Cámara del móvil</span>
+                        <span><i data-lucide="wand-2" class="tool-icon"></i>Apps de Edición (Snapseed, Remini, Canva)</span>
+                        <span><i data-lucide="message-circle" class="tool-icon"></i>WhatsApp</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, '¡Selfie grupal editada con un filtro de IA espectacular! Publicando en WhatsApp... Pista para seguir: La capilla más cercana si hacia Sevilla caminas.')">
+                           <i data-lucide="share-2" class="inline-block mr-1 h-4 w-4"></i> Simular Edición y Publicación de Foto
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="path-connector h-8"></div>
+
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="qr-code" class="mr-3 text-orange-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-orange-700">Posta 4: Capilla – El Misterio del QR</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                     <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Escaneo de Códigos QR e Interpretación de Contenido</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Usar la cámara del móvil o una app específica para escanear códigos QR.</li>
+                        <li>Leer y comprender la información contenida en el QR.</li>
+                        <li>Utilizar la información del QR para obtener una nueva pista.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="camera" class="tool-icon"></i>Cámara del móvil</span>
+                        <span><i data-lucide="scan-line" class="tool-icon"></i>App Escáner QR</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, 'QR escaneado. Mensaje: ¡Buen trabajo! Pista: Busca las raíces más antiguas de Aznalcázar, donde las campanas aún cuentan historias.')">
+                            <i data-lucide="scan-search" class="inline-block mr-1 h-4 w-4"></i> Simular Escaneo de QR
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="path-connector h-8"></div>
+            
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="messages-square" class="mr-3 text-cyan-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-cyan-700">Posta 5: Iglesia de San Pablo – Charla con la IA</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Interacción con Asistentes Virtuales/IA y Verificación de Fuentes</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Usar Google, ChatGPT o Gemini para buscar datos sobre la Iglesia.</li>
+                        <li>Mantener una conversación (por voz o texto) con una IA durante al menos un minuto.</li>
+                        <li>Formular preguntas para obtener información específica.</li>
+                        <li>Reflexionar sobre la importancia de verificar la información obtenida de IAs.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="mic" class="tool-icon"></i>Asistentes de Voz</span>
+                        <span><i data-lucide="bot" class="tool-icon"></i>ChatGPT / Gemini</span>
+                        <span><i data-lucide="search-check" class="tool-icon"></i>Navegador (para verificar)</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, 'Conversación iniciada con la IA sobre la Iglesia de San Pablo. ¡Ya llevas 30 segundos! Pista: Donde el agua descansa, los reflejos guardan secretos.')">
+                            <i data-lucide="message-circle" class="inline-block mr-1 h-4 w-4"></i> Simular Conversación con IA
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="path-connector h-8"></div>
+
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="map-pin" class="mr-3 text-blue-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-blue-700">Posta 6: Fuente Vieja – Conexión en Tiempo Real</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Geolocalización y Compartir Ubicación</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Utilizar el GPS del móvil para determinar tu ubicación exacta.</li>
+                        <li>Compartir tu ubicación en tiempo real con el grupo a través de Google Maps o similar.</li>
+                        <li>Navegar hasta un punto específico usando mapas digitales.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="locate-fixed" class="tool-icon"></i>GPS del móvil</span>
+                        <span><i data-lucide="map" class="tool-icon"></i>Google Maps</span>
+                        <span><i data-lucide="share-2" class="tool-icon"></i>Función de compartir ubicación</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡Ponlo a Prueba!</p>
+                        <button class="interactive-button" onclick="showSimulationMessage(this, '¡Hemos llegado a la Fuente Vieja! Ubicación compartida en tiempo real con el grupo. Pista para la última: Donde el saber vive, el juego termina.')">
+                            <i data-lucide="send" class="inline-block mr-1 h-4 w-4"></i> Simular Compartir Ubicación
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+             <div class="path-connector h-8"></div>
+
+            <div class="posta-card bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center cursor-pointer" onclick="togglePosta(this)">
+                    <div class="flex items-center">
+                        <i data-lucide="award" class="mr-3 text-rose-500 h-8 w-8"></i>
+                        <h2 class="text-xl font-semibold text-rose-700">Final: Biblioteca/Guadalinfo – Evaluación y Celebración</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="arrow-icon h-6 w-6 text-slate-500"></i>
+                </div>
+                <div class="posta-content mt-4">
+                    <p class="text-md font-medium text-slate-700 mb-1"><strong>Habilidad TIC Principal:</strong> Feedback Digital y Comunicación Final</p>
+                    <p class="text-sm text-slate-600 mb-2"><strong>Aprenderás a:</strong></p>
+                    <ul class="list-disc list-inside text-sm text-slate-600 mb-3 space-y-1">
+                        <li>Rellenar una pequeña encuesta sobre la experiencia a través de WhatsApp.</li>
+                        <li>Participar en la comunicación grupal para el cierre.</li>
+                        <li>Recibir y gestionar archivos digitales (diplomas) vía correo o WhatsApp.</li>
+                    </ul>
+                    <p class="text-sm text-slate-600 mb-1"><strong>Herramientas Digitales:</strong></p>
+                    <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 mb-4">
+                        <span><i data-lucide="list-checks" class="tool-icon"></i>Encuestas de WhatsApp</span>
+                        <span><i data-lucide="mail" class="tool-icon"></i>Correo Electrónico</span>
+                        <span><i data-lucide="message-circle" class="tool-icon"></i>WhatsApp</span>
+                        <span><i data-lucide="camera" class="tool-icon"></i>Cámara (para foto grupal)</span>
+                    </div>
+                    <div class="interactive-zone bg-slate-50 p-4 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-700 mb-2">¡El Cierre!</p>
+                        <button class="interactive-button mr-2" onclick="showSimulationMessage(this, 'Encuesta de WhatsApp rellenada. ¡Gracias por tu feedback! Preparados para la foto...')">
+                            <i data-lucide="check-square" class="inline-block mr-1 h-4 w-4"></i> Simular Rellenar Encuesta WhatsApp
+                        </button>
+                         <button class="interactive-button" onclick="showSimulationMessage(this, '¡Diplomas digitales enviados! Revisa tu correo/WhatsApp. ¡Enhorabuena!')">
+                            <i data-lucide="download-cloud" class="inline-block mr-1 h-4 w-4"></i> Simular Recepción de Diploma
+                        </button>
+                        <p class="simulation-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-12 bg-indigo-600 text-white p-8 rounded-xl shadow-xl">
+            <h3 class="text-2xl font-bold mb-4 text-center">Resumen de Habilidades Digitales Conseguidas</h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Navegación GPS</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Búsqueda y Manejo de Información (Internet/IA)</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Cumplimentación de Formularios Online</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Uso de IA Generativa de Imágenes</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Edición de Fotos con IA</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Compartir Multimedia (WhatsApp)</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Escaneo de Códigos QR</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Interacción con Asistentes Virtuales/IA</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Verificación de Fuentes</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Geolocalización y Compartir Ubicación</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Feedback Digital (Encuestas WhatsApp)</li>
+                <li class="flex items-center"><i data-lucide="check-circle" class="h-5 w-5 mr-2 text-green-300"></i>Gestión de Archivos Digitales</li>
+            </ul>
+        </section>
+
+        <footer class="text-center mt-10 py-6 border-t border-slate-300">
+            <p class="text-sm text-slate-600">&copy; <span id="currentYear"></span> Gymkhana Tecnológica Aznalcázar (Grupo 1). ¡Aprende y diviértete!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Script para el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Función para mostrar/ocultar contenido de las postas
+        function togglePosta(headerElement) {
+            const content = headerElement.nextElementSibling;
+            const arrow = headerElement.querySelector('.arrow-icon');
+            
+            // Comportamiento de acordeón: cerrar otras postas abiertas
+            document.querySelectorAll('.posta-content.open').forEach(openContent => {
+                if (openContent !== content) {
+                    openContent.classList.remove('open');
+                    const otherArrow = openContent.previousElementSibling.querySelector('.arrow-icon');
+                    if (otherArrow) {
+                        otherArrow.setAttribute('data-lucide', 'chevron-down');
+                    }
+                }
+            });
+
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.setAttribute('data-lucide', 'chevron-down');
+            } else {
+                content.classList.add('open');
+                arrow.setAttribute('data-lucide', 'chevron-up');
+            }
+            lucide.createIcons(); // Re-renderizar iconos si cambian
+        }
+
+        // Función para mostrar mensajes de simulación
+        function showSimulationMessage(buttonElement, message) {
+            let interactiveZone = buttonElement.closest('.interactive-zone');
+            if (!interactiveZone) return; 
+
+            let messageElement = interactiveZone.querySelector('.simulation-message');
+            if (!messageElement) return; 
+
+            messageElement.textContent = message;
+            messageElement.style.display = 'block';
+            
+            setTimeout(() => {
+                messageElement.style.display = 'none';
+            }, 6000); // Mensaje visible por 6 segundos
+        }
+        
+    </script>
+</body>
+</html>
